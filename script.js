@@ -1,72 +1,91 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const taskContent = document.getElementById('task-content');
-    const completeTaskBtn = document.getElementById('complete-task');
+    const categoryDropdown = document.getElementById('category-dropdown');
     const taskList = document.getElementById('task-list');
-    const resetTaskBtn = document.getElementById('reset-tasks');
+    const resetTasksBtn = document.getElementById('reset-tasks');
 
+    // Tasks grouped by categories
     const tasks = [
-        "Introduce yourself to someone new today.",
-        "Research a company you're interested in.",
-        "Practice answering a common interview question.",
-        "Write a short bio about yourself.",
-        "List three job skills you'd like to improve."
+        { task: "Practice a 5-minute mindfulness meditation.", category: "Mental Health" },
+        { task: "Take a deep-breathing exercise break.", category: "Mental Health" },
+        { task: "Write a short description of your top skills for your resume.", category: "Career Transition" },
+        { task: "Research networking events in your area.", category: "Career Transition" },
+        { task: "Create a simple monthly budget plan.", category: "Financial Literacy" },
+        { task: "Read about VA benefits you may qualify for.", category: "Financial Literacy" },
+        { task: "Reach out to a friend or family member today.", category: "Social Reintegration" },
+        { task: "Plan a social activity for the weekend.", category: "Social Reintegration" }
     ];
 
-    let currentTask = getDailyTask();
-    taskContent.textContent = currentTask;
+    // Load completed tasks from local storage
+    function loadCompletedTasks() {
+        return JSON.parse(localStorage.getItem('completedTasks')) || [];
+    }
 
-    function getDailyTask() {
-        const today = new Date().toLocaleDateString();
-        const savedTask = localStorage.getItem('currentTask');
-        const savedDate = localStorage.getItem('taskDate');
+    // Save completed tasks to local storage
+    function saveCompletedTasks(completedTasks) {
+        localStorage.setItem('completedTasks', JSON.stringify(completedTasks));
+    }
 
-        if (savedDate === today && savedTask) {
-            return savedTask;
+    // Display tasks based on the selected category with checkboxes
+    function displayTasksByCategory(category) {
+        taskList.innerHTML = ''; // Clear previous tasks
+        const completedTasks = loadCompletedTasks();
+
+        // Filter tasks that match the selected category
+        const filteredTasks = tasks.filter(task => task.category === category);
+
+        // Display the tasks in the list
+        if (filteredTasks.length > 0) {
+            filteredTasks.forEach(taskItem => {
+                const li = document.createElement('li');
+
+                // Checkbox for marking the task as complete
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = completedTasks.includes(taskItem.task);
+                checkbox.addEventListener('change', () => markTaskAsComplete(taskItem.task, checkbox.checked));
+
+                li.appendChild(checkbox);
+                li.appendChild(document.createTextNode(taskItem.task));
+                taskList.appendChild(li);
+            });
         } else {
-            const completedTasks = JSON.parse(localStorage.getItem('completedTasks')) || [];
-            const availableTasks = tasks.filter(task => !completedTasks.some(item => item.task === task));
-
-            if (availableTasks.length === 0) {
-                localStorage.setItem('completedTasks', JSON.stringify([]));
-                return "All tasks completed! Reset to start over.";
-            }
-
-            const newTask = availableTasks[Math.floor(Math.random() * availableTasks.length)];
-            localStorage.setItem('currentTask', newTask);
-            localStorage.setItem('taskDate', today);
-            return newTask;
-        }
-    }
-
-    completeTaskBtn.addEventListener('click', () => {
-        const completedTasks = JSON.parse(localStorage.getItem('completedTasks')) || [];
-        const today = new Date().toLocaleDateString();
-
-        if (!completedTasks.some(item => item.task === currentTask)) {
-            completedTasks.push({ task: currentTask, date: today });
-            localStorage.setItem('completedTasks', JSON.stringify(completedTasks));
-            renderProgress();
-        }
-    });
-
-    resetTaskBtn.addEventListener('click', () => {
-        localStorage.removeItem('completedTasks');
-        localStorage.removeItem('currentTask');
-        localStorage.removeItem('taskDate');
-        taskContent.textContent = getDailyTask();
-        renderProgress();
-    });
-
-    function renderProgress() {
-        taskList.innerHTML = '';
-        const completedTasks = JSON.parse(localStorage.getItem('completedTasks')) || [];
-        
-        completedTasks.forEach(item => {
             const li = document.createElement('li');
-            li.textContent = `${item.task} - Completed on ${item.date}`;
+            li.textContent = "No tasks available for this category.";
             taskList.appendChild(li);
-        });
+        }
     }
 
-    renderProgress();
+    // Mark or unmark a task as complete
+    function markTaskAsComplete(task, isComplete) {
+        let completedTasks = loadCompletedTasks();
+
+        if (isComplete) {
+            if (!completedTasks.includes(task)) {
+                completedTasks.push(task); // Add task to completed list
+            }
+        } else {
+            completedTasks = completedTasks.filter(t => t !== task); // Remove task from completed list
+        }
+
+        saveCompletedTasks(completedTasks); // Save updated list to local storage
+    }
+
+    // Event listener for dropdown selection
+    categoryDropdown.addEventListener('change', (event) => {
+        const selectedCategory = event.target.value;
+        if (selectedCategory) {
+            displayTasksByCategory(selectedCategory);
+        } else {
+            taskList.innerHTML = "<li>Please select a category to view tasks.</li>";
+        }
+    });
+
+    // Reset progress by clearing completed tasks
+    resetTasksBtn.addEventListener('click', () => {
+        localStorage.removeItem('completedTasks');
+        taskList.innerHTML = "<li>Please select a category to view tasks.</li>";
+    });
+
+    // Initialize with a message to select a category
+    taskList.innerHTML = "<li>Please select a category to view tasks.</li>";
 });

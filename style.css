@@ -22,6 +22,12 @@ h1 {
     font-size: 24px;
 }
 
+h2 {
+    color: #333;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
 button {
     padding: 10px 20px;
     margin-top: 10px;
@@ -47,12 +53,46 @@ button:hover {
     background-color: #990000;
 }
 
-#progress ul {
+#progress ul, #resources ul {
     list-style-type: none;
     padding: 0;
+    text-align: left;
 }
 
-#progress li {
+#progress li, #resources li {
     padding: 5px 0;
     color: #666;
+}
+
+#resources a {
+    color: #007acc;
+    text-decoration: none;
+}
+
+#resources a:hover {
+    text-decoration: underline;
+}
+
+/* New styles for category selection form */
+#category-selection {
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: 16px;
+}
+
+#category-form label {
+    display: block;
+    margin: 8px 0;
+    cursor: pointer;
+}
+
+#save-categories {
+    background-color: #28a745;
+    border-radius: 4px;
+    margin-top: 10px;
+    color: white;
+}
+
+#save-categories:hover {
+    background-color: #218838;
 }

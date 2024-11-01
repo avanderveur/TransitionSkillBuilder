@@ -9,15 +9,35 @@
 <body>
     <div id="app">
         <h1>Transition Skill Builder</h1>
-        <div id="daily-task">
-            <p>Your task for today:</p>
-            <p id="task-content">Loading...</p>
-            <button id="complete-task">Mark as Complete</button>
+        
+        <!-- Dropdown to select category -->
+        <div id="category-selection">
+            <h2>Select Category</h2>
+            <select id="category-dropdown">
+                <option value="">--Select a Category--</option>
+                <option value="Mental Health">Mental Health</option>
+                <option value="Career Transition">Career Transition</option>
+                <option value="Financial Literacy">Financial Literacy</option>
+                <option value="Social Reintegration">Social Reintegration</option>
+            </select>
+        </div>
+
+        <!-- Task List based on selected category -->
+        <div id="task-list-section">
+            <h2>Tasks for Selected Category</h2>
+            <ul id="task-list"></ul>
             <button id="reset-tasks">Reset Progress</button>
         </div>
-        <div id="progress">
-            <h2>Your Progress</h2>
-            <ul id="task-list"></ul>
+
+        <!-- Helpful Resources Section -->
+        <div id="resources">
+            <h2>Helpful Resources</h2>
+            <ul>
+                <li><a href="https://www.mentalhealth.va.gov/" target="_blank">VA Mental Health Services</a> - Support for managing stress and mental health.</li>
+                <li><a href="https://www.careeronestop.org/" target="_blank">CareerOneStop</a> - Job search and resume-building resources.</li>
+                <li><a href="https://www.militaryonesource.mil/" target="_blank">Military OneSource Financial Help</a> - Financial advice and budgeting tools for veterans.</li>
+                <li><a href="https://www.veteransfamiliesunited.org/" target="_blank">Veterans and Families United</a> - Resources for social reintegration and family support.</li>
+            </ul>
         </div>
     </div>
     <script src="script.js"></script>
