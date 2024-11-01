@@ -1,0 +1,210 @@
+/* General Layout */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to bottom right, #f0f4f8, #d9e8f5);
+}
+
+#app {
+    max-width: 500px;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    border: 2px solid #003366;
+    text-align: center;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#app:hover {
+    transform: translateY(-4px);
+}
+
+/* Header */
+h1 {
+    color: #003366;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+h2 {
+    color: #b22234;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Category Links - Styled as Buttons */
+#category-selection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+#category-selection ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%; /* Full width for the list */
+}
+
+#category-selection ul li {
+    margin: 10px 0;
+    width: 100%;
+}
+
+#category-selection a {
+    color: #ffffff;
+    background-color: #003366; /* Dark blue background for button look */
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    display: block; /* Block-level element */
+    text-align: center; /* Center text inside button */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 51, 102, 0.2); /* Subtle shadow */
+    width: 100%; /* Full width of container */
+    max-width: 300px; /* Limit width to keep buttons compact */
+    margin: 0 auto; /* Center button horizontally */
+}
+
+#category-selection a:hover {
+    background-color: #b22234; /* Red on hover */
+    transform: translateY(-2px); /* Lift on hover */
+}
+
+/* About Section */
+#about-section {
+    margin-top: 20px;
+    background-color: #f9fafc;
+    border: 1px solid #e0e6ed;
+    padding: 20px;
+    border-radius: 8px;
+    color: #333;
+    font-size: 15px;
+    line-height: 1.6;
+    text-align: center; /* Center text in the About section */
+    margin-bottom: 20px;
+    max-width: 450px;
+}
+
+/* Emblem Banner Styling */
+#emblem-banner {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#emblem-banner img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Back to Categories Link */
+#back-to-categories {
+    color: #003366;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+#back-to-categories:hover {
+    color: #b22234;
+    text-decoration: underline;
+}
+/* Task List */
+#task-list {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 20px 0; /* Margin for spacing */
+    width: 100%; /* Full width */
+    text-align: left; /* Align text to the left */
+}
+
+#task-list li {
+    margin: 15px 0; /* Space between tasks */
+    font-size: 16px; /* Font size for tasks */
+    color: #333; /* Dark gray text */
+    display: flex; /* Align items in a row */
+    align-items: center; /* Center items vertically */
+    background: #f9fafc; /* Light background for tasks */
+    padding: 10px; /* Padding around the task item */
+    border-radius: 6px; /* Rounded corners */
+    border: 1px solid #e0e6ed; /* Border around the task item */
+}
+
+/* Reset Progress Button */
+#reset-tasks {
+    background-color: #b22234; /* Red */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 20px; /* Space above button */
+    box-shadow: 0 4px 8px rgba(178, 34, 52, 0.2); /* Shadow for depth */
+    transition: background-color 0.3s ease;
+}
+
+/* Resources Section */
+#resources-section {
+    margin-top: 20px; /* Space above resources section */
+    background-color: #f9fafc; /* Light background */
+    border: 1px solid #e0e6ed; /* Border for section */
+    padding: 15px; /* Padding inside section */
+    border-radius: 8px; /* Rounded corners */
+    color: #333; /* Dark gray text */
+    font-size: 15px; /* Font size */
+    line-height: 1.6; /* Line height for readability */
+    text-align: left; /* Left align for resources */
+    margin-bottom: 20px; /* Space below section */
+    max-width: 450px; /* Limit width for consistency */
+}
+
+#resources-section h2 {
+    color: #b22234; /* Red for headers */
+    font-size: 18px; /* Font size for section header */
+    font-weight: 600; /* Bold */
+    margin-bottom: 15px; /* Space below header */
+}
+
+.resources-list {
+    list-style-type: none; /* Remove bullet points for resources */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.resources-list li {
+    margin-bottom: 10px; /* Space between resources */
+}
+
+.resources-list a {
+    color: #003366; /* Dark blue for links */
+    font-weight: bold; /* Bold links */
+    text-decoration: none; /* No underline */
+}
+
+.resources-list a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
