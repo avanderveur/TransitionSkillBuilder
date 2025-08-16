@@ -1,37 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transition Skill Builder</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transition Skill Builder</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <div id="app">
-        <h1>Transition Skill Builder</h1>
-        <h2>Select a Category</h2>
-        
-        <div id="category-selection">
-            <ul>
-                <li><a href="mental_health.html">Mental Health</a></li>
-                <li><a href="career_transition.html">Career Transition</a></li>
-                <li><a href="financial_literacy.html">Financial Literacy</a></li>
-                <li><a href="social_integration.html">Social Integration</a></li>
-            </ul>
-        </div>
+  <div id="app">
+    <!-- HERO -->
+    <header style="text-align:center; margin-bottom:1rem;">
+      <h1>Transition Skill Builder</h1>
+      <p style="max-width:720px;margin:0 auto;">
+        Plan your civilian life in <strong>10 minutes</strong>. Bite-sized checklists for jobs, school, VA benefits, money, and health—made by a veteran for veterans.
+      </p>
+    </header>
 
-        <div id="about-section">
-            <p>
-                The Transition Skill Builder is a resource designed to support veterans transitioning into civilian life. 
-                Each category provides essential skills, resources, and daily tasks aimed at fostering a successful 
-                transition. Whether you’re looking to improve mental health, career skills, financial knowledge, or 
-                social reintegration, this tool offers practical guidance and support.
-            </p>
-        </div>
+    <!-- MINI QUIZ ROUTER -->
+    <section aria-labelledby="start-plan" style="margin:1rem 0;">
+      <h2 id="start-plan" style="text-align:center;">Get a Starting Plan</h2>
+      <form id="miniQuiz" style="display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;">
+        <label>
+          <span class="sr-only">Top priority</span>
+          <select id="priority" required>
+            <option value="">What's your top priority?</option>
+            <option value="career_transition.html">Find a job</option>
+            <option value="financial_literacy.html">Fix my finances</option>
+            <option value="mental_health.html">Reduce stress / feel better</option>
+            <option value="social_integration.html">Build community</option>
+          </select>
+        </label>
+        <button type="submit" class="btn">Get My Starting Plan</button>
+      </form>
+    </section>
 
-        <div id="emblem-banner">
-            <img src="images/armed-forces-banner.jpg" alt="Armed Forces Emblems Banner">
-        </div>
+    <!-- CATEGORIES -->
+    <section aria-labelledby="choose-category">
+      <h2 id="choose-category" style="text-align:center;">Select a Category</h2>
+      <div id="category-selection">
+        <ul>
+          <li><a class="btn btn-primary" href="mental_health.html">Mental Health</a></li>
+          <li><a class="btn btn-primary" href="career_transition.html">Career Transition</a></li>
+          <li><a class="btn btn-primary" href="financial_literacy.html">Financial Literacy</a></li>
+          <li><a class="btn btn-primary" href="social_integration.html">Social Integration</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ABOUT / TRUST -->
+    <section id="about-section">
+      <p>
+        Transition Skill Builder reduces overwhelm with quick daily tasks and links to official resources. Track your progress and move forward one small step at a time.
+      </p>
+    </section>
+
+    <!-- EMBLEM BANNER -->
+    <div id="emblem-banner">
+      <img src="images/armed-forces-banner.jpg" alt="Armed Forces Emblems Banner" />
     </div>
+
+    <!-- FOOTER -->
+    <footer style="text-align:center; font-size:.95rem; color:#4a4a4a; margin-top:1rem;">
+      <p>Created by Aundria VanderVeur, USMC veteran. Educational aid only—this is not legal, financial, or medical advice.</p>
+      <p>
+        <a href="https://forms.gle/REPLACE_WITH_YOUR_WAITLIST" target="_blank" rel="noopener">Join the Pro waitlist</a>
+        · <a href="mailto:a.vanderveur21@outlook.com">Contact</a>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Mini-quiz script -->
+  <script>
+    document.getElementById('miniQuiz')?.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const v = document.getElementById('priority').value;
+      if (v) location.href = v;
+    });
+  </script>
 </body>
 </html>
