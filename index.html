@@ -9,36 +9,35 @@
 <body>
   <div id="app">
     <!-- HERO -->
-    <header style="text-align:center; margin-bottom:1rem;">
+    <header class="hero">
       <h1>Transition Skill Builder</h1>
-      <p style="max-width:720px;margin:0 auto;">
-        Plan your civilian life in <strong>10 minutes</strong>. Bite-sized checklists for jobs, school, VA benefits, money, and health—made by a veteran for veterans.
+      <p>
+        Plan your civilian life in <strong>10 minutes</strong>. Bite-sized checklists for jobs, school, VA benefits,
+        money, and health—made by a veteran for veterans.
       </p>
     </header>
 
     <!-- MINI QUIZ ROUTER -->
-    <section aria-labelledby="start-plan" style="margin:1rem 0;">
-      <h2 id="start-plan" style="text-align:center;">Get a Starting Plan</h2>
-      <form id="miniQuiz" style="display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;">
-        <label>
-          <span class="sr-only">Top priority</span>
-          <select id="priority" required>
-            <option value="">What's your top priority?</option>
-            <option value="career_transition.html">Find a job</option>
-            <option value="financial_literacy.html">Fix my finances</option>
-            <option value="mental_health.html">Reduce stress / feel better</option>
-            <option value="social_integration.html">Build community</option>
-          </select>
-        </label>
-        <button type="submit" class="btn">Get My Starting Plan</button>
+    <section aria-labelledby="start-plan" class="section">
+      <h2 id="start-plan">Get a Starting Plan</h2>
+      <form id="miniQuiz" class="quiz">
+        <label class="sr-only" for="priority">Top priority</label>
+        <select id="priority" required>
+          <option value="">What's your top priority?</option>
+          <option value="career_transition.html">Find a job</option>
+          <option value="financial_literacy.html">Fix my finances</option>
+          <option value="mental_health.html">Reduce stress / feel better</option>
+          <option value="social_integration.html">Build community</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Get My Starting Plan</button>
       </form>
     </section>
 
     <!-- CATEGORIES -->
-    <section aria-labelledby="choose-category">
-      <h2 id="choose-category" style="text-align:center;">Select a Category</h2>
+    <section aria-labelledby="choose-category" class="section">
+      <h2 id="choose-category">Select a Category</h2>
       <div id="category-selection">
-        <ul>
+        <ul class="category-list">
           <li><a class="btn btn-primary" href="mental_health.html">Mental Health</a></li>
           <li><a class="btn btn-primary" href="career_transition.html">Career Transition</a></li>
           <li><a class="btn btn-primary" href="financial_literacy.html">Financial Literacy</a></li>
@@ -48,9 +47,10 @@
     </section>
 
     <!-- ABOUT / TRUST -->
-    <section id="about-section">
+    <section id="about-section" class="card">
       <p>
-        Transition Skill Builder reduces overwhelm with quick daily tasks and links to official resources. Track your progress and move forward one small step at a time.
+        Transition Skill Builder reduces overwhelm with quick daily tasks and links to official resources.
+        Track your progress and move forward one small step at a time.
       </p>
     </section>
 
@@ -60,7 +60,7 @@
     </div>
 
     <!-- FOOTER -->
-    <footer style="text-align:center; font-size:.95rem; color:#4a4a4a; margin-top:1rem;">
+    <footer>
       <p>Created by Aundria VanderVeur, USMC veteran. Educational aid only—this is not legal, financial, or medical advice.</p>
       <p>
         <a href="https://forms.gle/REPLACE_WITH_YOUR_WAITLIST" target="_blank" rel="noopener">Join the Pro waitlist</a>
